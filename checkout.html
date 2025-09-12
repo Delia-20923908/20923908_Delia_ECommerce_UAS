@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout - La Petite Cake</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: #ffd6e8;
+      flex-wrap: nowrap;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #6b214f;
+      user-select: none;
+      white-space: nowrap;
+    }
+    nav {
+      display: flex;
+      gap: 12px;
+    }
+    nav a {
+      padding: 8px 16px;
+      background: #fff;
+      color: #6b214f;
+      border-radius: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    nav a:hover {
+      background-color: #e7d0f2;
+      color: #4a0c6f;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 700px;
+      margin: 30px auto 40px;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(107,33,79,0.15);
+      background-color: #fff;
+    }
+    h2 {
+      text-align: center;
+      color: #6b214f;
+      margin-bottom: 20px;
+    }
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .checkout-form label {
+      font-weight: bold;
+      color: #6b214f;
+    }
+    .checkout-form input,
+    .checkout-form textarea,
+    .checkout-form select {
+      padding: 8px 10px;
+      border: 1.5px solid #6b214f;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    .checkout-form input:focus,
+    .checkout-form textarea:focus,
+    .checkout-form select:focus {
+      border-color: #a35ea9;
+      outline: none;
+    }
+    table.cart-summary {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      margin-bottom: 20px;
+      color: #6b214f;
+    }
+    table.cart-summary th, table.cart-summary td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    table.cart-summary th {
+      background-color: #f9e6f7;
+      font-weight: 700;
+    }
+    tfoot tr td {
+      font-weight: 700;
+      font-size: 1.1em;
+      text-align: right;
+      background-color: transparent;
+    }
+    tfoot tr td:first-child {
+      text-align: left;
+    }
+    button[type="submit"] {
+      background-color: #6b214f;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(107,33,79,0.5);
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+    }
+    button[type="submit"]:hover {
+      background-color: #4a0c6f;
+    }
+    footer {
+      background-color: #6b214f;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-weight: 600;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>La Petite Cake</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="produk.html">Produk</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="cart.html">Keranjang</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Checkout</h2>
+
+
+    <!-- Ringkasan produk checkout -->
+    <table class="cart-summary" id="cartSummary">
+      <thead>
+        <tr>
+          <th>Produk</th>
+          <th>Jumlah</th>
+          <th>Harga Satuan (Rp)</th>
+          <th>Subtotal (Rp)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Baris produk diisi javascript -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total Harga Produk</td>
+          <td id="totalPrice">0</td>
+        </tr>
+        <tr>
+          <td colspan="3">Ongkos Kirim (Bandung)</td>
+          <td id="shippingCost">15000</td>
+        </tr>
+        <tr>
+          <td colspan="3">Total yang harus dibayar</td>
+          <td id="grandTotal">0</td>
+        </tr>
+      </tfoot>
+    </table>
+
+
+    <form class="checkout-form" onsubmit="submitOrder(event)">
+      <label for="name">Nama Lengkap:</label>
+      <input type="text" id="name" name="name" required />
+
+
+      <label for="phone">No. HP / WhatsApp:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Contoh: 08123456789" pattern="[0-9+ ]{8,15}" required />
+
+
+      <label for="address">Alamat Pengiriman (Wilayah Bandung):</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+
+      <label for="courier">Pilih Kurir:</label>
+      <select id="courier" name="courier" required>
+        <option value="">--Pilih Kurir--</option>
+        <option value="gojek">Gojek</option>
+        <option value="grab">Grab</option>
+        <option value="jne">JNE</option>
+      </select>
+
+
+      <label for="payment">Metode Pembayaran:</label>
+      <select id="payment" name="payment" required>
+        <option value="">--Pilih Metode Pembayaran--</option>
+        <option value="cod">Cash on Delivery (COD)</option>
+        <option value="transfer">Transfer Bank</option>
+        <option value="qris">QRIS</option>
+      </select>
+
+
+      <button type="submit">Konfirmasi Pesanan</button>
+    </form>
+  </main>
+  <footer>
+    <p>La Petite Cake &copy; 2025</p>
+  </footer>
+
+
+  <script>
+    const ongkir = 15000;
+
+    function displayCartSummary() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      // Hilangkan Soft Cookies
+      cart = cart.filter(item => item.name !== 'Soft Cookies');
+
+      // Kurangi 1 Fudgy Brownies jika ada dan qty > 0
+      cart = cart.map(item => {
+        if (item.name === 'Fudgy Brownies' && item.quantity > 0) {
+          let qty = item.quantity - 1;
+          return {...item, quantity: qty > 0 ? qty : 0};
+        }
+        return item;
+      }).filter(item => item.quantity > 0);
+
+      const tbody = document.querySelector('#cartSummary tbody');
+      tbody.innerHTML = '';
+
+      let total = 0;
+      cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>${item.price.toLocaleString('id-ID')}</td>
+          <td>${subtotal.toLocaleString('id-ID')}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById('totalPrice').textContent = total.toLocaleString('id-ID');
+      document.getElementById('shippingCost').textContent = ongkir.toLocaleString('id-ID');
+      document.getElementById('grandTotal').textContent = (total + ongkir).toLocaleString('id-ID');
+    }
+
+    function getCartTotal() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart = cart.filter(item => item.name !== 'Soft Cookies');
+      cart = cart.map(item => {
+        if (item.name === 'Fudgy Brownies' && item.quantity > 0) {
+          let qty = item.quantity - 1;
+          return {...item, quantity: qty > 0 ? qty : 0};
+        }
+        return item;
+      }).filter(item => item.quantity > 0);
+
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+      });
+      return total;
+    }
+
+    function submitOrder(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const courier = document.getElementById('courier').value;
+      const payment = document.getElementById('payment').value;
+
+      if (!name || !phone || !address || !courier || !payment) {
+        alert('Mohon lengkapi semua data dan pilih kurir serta metode pembayaran.');
+        return;
+      }
+
+      const totalPrice = getCartTotal();
+      const grandTotal = totalPrice + ongkir;
+
+      alert(`Terima kasih ${name}, pesanan Anda telah diterima.\nTotal bayar: Rp ${grandTotal.toLocaleString('id-ID')}\nKurir: ${courier}\nMetode Pembayaran: ${payment}`);
+
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
+    }
+
+    window.onload = displayCartSummary;
+  </script>
+</body>
+</html>

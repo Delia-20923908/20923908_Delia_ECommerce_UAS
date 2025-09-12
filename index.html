@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Petite Cake - Home</title>
+  <style>
+    /* Header layout */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffd6e8; /* pink muda background header */
+      padding: 15px 40px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #6b214f;
+      user-select: none;
+      white-space: nowrap;
+    }
+    /* Search bar center */
+    .search-container {
+      flex-grow: 1;
+      max-width: 400px;
+      display: flex;
+      justify-content: center;
+    }
+    .search-container input[type="text"] {
+      width: 100%;
+      padding: 8px 14px;
+      border: 2px solid #6b214f;
+      border-radius: 20px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .search-container input[type="text"]:focus {
+      border-color: #a35ea9;
+    }
+    /* Navigation bubbles right */
+    nav {
+      display: flex;
+      gap: 12px;
+    }
+    nav a {
+      text-decoration: none;
+      padding: 8px 16px;
+      background: #fff;
+      color: #6b214f;
+      border-radius: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 75px;
+    }
+    nav a:hover {
+      background-color: #e7d0f2;
+      color: #4a0c6f;
+    }
+    /* Product grid */
+    main.product-grid {
+      padding: 20px 40px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+      gap: 20px;
+      background: white;
+    }
+    article.product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    article.product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    article.product-card h2 {
+      margin: 10px 0 5px;
+      font-size: 1.2rem;
+      color: #6b214f;
+    }
+    article.product-card .price {
+      font-weight: bold;
+      color: #6b214f;
+      margin-bottom: 8px;
+    }
+    article.product-card .desc {
+      flex-grow: 1;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 12px;
+    }
+    .product-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .btn.bubble {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      color: #333;
+      display: inline-block;
+      text-align: center;
+      user-select: none;
+    }
+    .btn.bubble.detail {
+      background-color: #888888;
+      color: white;
+    }
+    .btn.bubble.detail:hover {
+      background-color: #666666;
+    }
+    .btn.bubble.cart {
+      background-color: #6b214f;
+      color: white;
+    }
+    .btn.bubble.cart:hover {
+      background-color: #5a193f;
+    }
+    footer {
+      background-color: #6b214f;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+    }
+    footer a {
+      color: #f9d1ff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">La Petite Cake</div>
+    <div class="search-container">
+      <input type="text" placeholder="Cari produk, kue, minuman..." aria-label="Cari produk" />
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="produk.html">Produk</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="cart.html">Keranjang</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main class="product-grid">
+
+    <article class="product-card">
+      <a href="produk1.html">
+        <img src="https://images.pexels.com/photos/6168429/pexels-photo-6168429.jpeg" alt="Cheesecake" />
+        <h2>Cheesecake</h2>
+      </a>
+      <p class="price">Rp 150.000</p>
+      <p class="desc">Kue keju panggang dengan bagian luar yang gosong dan karamel, lembut dan creamy.</p>
+      <div class="product-actions">
+        <a href="produk1.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Cheesecake', 150000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk2.html">
+        <img src="https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg" alt="Fudgy Brownies" />
+        <h2>Fudgy Brownies</h2>
+      </a>
+      <p class="price">Rp 25.000</p>
+      <p class="desc">Brownies dengan tekstur padat, kenyal, dan kaya rasa cokelat.</p>
+      <div class="product-actions">
+        <a href="produk2.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Fudgy Brownies', 25000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk3.html">
+        <img src="https://images.pexels.com/photos/16974007/pexels-photo-16974007.jpeg" alt="Soft Cookies" />
+        <h2>Soft Cookies</h2>
+      </a>
+      <p class="price">Rp 8.000/pcs</p>
+      <p class="desc">Kue kering besar dengan bagian tengah lembut, kenyal, dan luar renyah. Varian cokelat, matcha, red velvet.</p>
+      <div class="product-actions">
+        <a href="produk3.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Soft Cookies', 8000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk4.html">
+        <img src="https://images.pexels.com/photos/15485517/pexels-photo-15485517.jpeg" alt="Hampers Kue Kering" />
+        <h2>Hampers Tahunan Kue Kering</h2>
+      </a>
+      <p class="price">Rp 150.000</p>
+      <p class="desc">Berbagai kue kering klasik nastar, kastengel, putri salju dalam kemasan cantik. Pas untuk bingkisan hari raya.</p>
+      <div class="product-actions">
+        <a href="produk4.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Hampers Tahunan Kue Kering', 150000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk5.html">
+        <img src="https://images.pexels.com/photos/1346345/pexels-photo-1346345.jpeg" alt="Macaron" />
+        <h2>Macaron</h2>
+      </a>
+      <p class="price">Rp 120.000</p>
+      <p class="desc">Kue kering almond renyah di luar, kenyal di dalam. Dua keping dengan krim atau selai, warna cerah dan rasa variatif.</p>
+      <div class="product-actions">
+        <a href="produk5.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Macaron', 120000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk6.html">
+        <img src="https://images.pexels.com/photos/3093479/pexels-photo-3093479.jpeg" alt="Red Velvet Slice" />
+        <h2>Red Velvet Slice</h2>
+      </a>
+      <p class="price">Rp 35.000</p>
+      <p class="desc">Irisan kue red velvet merah mencolok dengan cream cheese frosting lembut dan sedikit asam.</p>
+      <div class="product-actions">
+        <a href="produk6.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Red Velvet Slice', 35000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk7.html">
+        <img src="https://images.pexels.com/photos/1028704/pexels-photo-1028704.jpeg" alt="Cupcake" />
+        <h2>Cupcake</h2>
+      </a>
+      <p class="price">Rp 6.000/pcs</p>
+      <p class="desc">Kue kecil dihias krim di atasnya. Aneka rasa kue dan topping unik.</p>
+      <div class="product-actions">
+        <a href="produk7.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Cupcake', 6000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk8.html">
+        <img src="https://images.pexels.com/photos/5567621/pexels-photo-5567621.jpeg" alt="Iced Coffee Latte" />
+        <h2>Iced Coffee Latte</h2>
+      </a>
+      <p class="price">Rp 30.000</p>
+      <p class="desc">Kopi dingin dari espresso, susu, es batu, rasa creamy, lembut, menyegarkan.</p>
+      <div class="product-actions">
+        <a href="produk8.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Iced Coffee Latte', 30000)">+ Keranjang</button>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <a href="produk9.html">
+        <img src="https://images.pexels.com/photos/18794176/pexels-photo-18794176.jpeg" alt="Matcha Latte" />
+        <h2>Matcha Latte</h2>
+      </a>
+      <p class="price">Rp 35.000</p>
+      <p class="desc">Minuman teh hijau Jepang (matcha) campur susu dan es batu, manis dan sedikit pahit beraroma teh khas.</p>
+      <div class="product-actions">
+        <a href="produk9.html" class="btn bubble detail">Lihat Detail</a>
+        <button class="btn bubble cart" onclick="addToCart('Matcha Latte', 35000)">+ Keranjang</button>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <p><strong>Kontak Kami</strong></p>
+    <p>Email: <a href="mailto:info@lapetitecake.com">Lacakepetite@gmail.com</a></p>
+    <p>Telepon: <a href="tel:+62 881 4033 829">+62 881 4033 829</a></p>
+    <p>Alamat: Jl. Kopo Gang Ekawarga, Kota Bandung, Jawa Barat</p>
+    <p style="margin-top: 10px;">La Petite Cake &copy; 2025</p>
+  </footer>
+
+  <script>
+    // Fungsi menambah produk ke localStorage keranjang
+    function addToCart(productName, productPrice) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(item => item.name === productName);
+      if(index !== -1) {
+        cart[index].quantity += 1;
+      } else {
+        cart.push({ name: productName, price: productPrice, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(productName + ' berhasil ditambahkan ke keranjang!');
+    }
+  </script>
+</body>
+</html>

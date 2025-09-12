@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kontak - La Petite Cake</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #ffd6e8; /* pink muda */
+    flex-wrap: nowrap;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #6b214f;
+    user-select: none;
+    white-space: nowrap;
+  }
+  nav {
+    display: flex;
+    gap: 12px;
+  }
+  nav a {
+    padding: 8px 16px;
+    background: #fff;
+    color: #6b214f;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  nav a:hover {
+    background-color: #e7d0f2;
+    color: #4a0c6f;
+  }
+  /* Main content - center */
+  main.contact-form {
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(107,33,79,0.2);
+    background-color: #fff;
+  }
+  main.contact-form h2 {
+    text-align: center;
+    color: #6b214f;
+    margin-bottom: 20px;
+  }
+  form label {
+    display: block;
+    margin-bottom: 6px;
+    color: #6b214f;
+    font-weight: 600;
+  }
+  form input[type="text"],
+  form input[type="email"],
+  form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid #6b214f;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    resize: vertical;
+    transition: border-color 0.3s;
+  }
+  form input[type="text"]:focus,
+  form input[type="email"]:focus,
+  form textarea:focus {
+    border-color: #a35ea9;
+    outline: none;
+  }
+  form button[type="submit"] {
+    background-color: #6b214f;
+    color: white;
+    padding: 10px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(107,33,79,0.4);
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+  }
+  form button[type="submit"]:hover {
+    background-color: #4a0c6f;
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #6b214f;
+    color: white;
+    margin-top: auto;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>La Petite Cake</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="produk.html">Produk</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="cart.html">Keranjang</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+</header>
+<main class="contact-form">
+  <h2>Hubungi Kami</h2>
+  <form>
+    <label for="name">Nama:</label>
+    <input type="text" id="name" name="name" required />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+    <label for="message">Pesan:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    <button type="submit">Kirim</button>
+  </form>
+</main>
+<footer>
+  <p>La Petite Cake &copy; 2025</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cupcake - La Petite Cake</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+  }
+  header {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    background-color: #ffc0cb;
+    padding: 8px 0;
+    border-radius: 20px;
+  }
+  nav a {
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  nav a:hover {
+    background-color: #f5c7d2;
+    color: #000;
+  }
+  main.product-detail {
+    padding: 1rem;
+    max-width: 600px;
+    margin: auto;
+  }
+  main.product-detail img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  h2 {
+    color: #7B3FBF;
+    margin-bottom: 5px;
+  }
+  .price {
+    font-weight: bold;
+    color: #0c0c0c;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  .description {
+    margin-bottom: 20px;
+    color: #444;
+    line-height: 1.5;
+  }
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+  }
+  button {
+    background-color: #7B3FBF;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(123, 63, 191, 0.4);
+    cursor: pointer;
+    width: 48%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  button:hover {
+    background-color: #5a2a87;
+    box-shadow: 0 6px 12px rgba(90, 42, 135, 0.6);
+  }
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(123, 63, 191, 0.7);
+  }
+  footer {
+    text-align: center;
+    padding: 15px 0;
+    user-select: none;
+    color: black;
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="cart.html">Keranjang</a>
+    <a href="checkout.html">Checkout</a>
+  </nav>
+</header>
+
+<main class="product-detail">
+  <img src="https://images.pexels.com/photos/1028704/pexels-photo-1028704.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cupcake" />
+  <h2>Cupcake</h2>
+  <p class="price">Rp 6.000/pcs</p>
+  <p>Kue berukuran kecil yang dihias dengan krim di atasnya. Tersedia dalam aneka rasa kue dan topping yang unik.</p>
+</main>
+
+<div class="button-group">
+  <button onclick="window.location.href='index.html'">KEMBALI</button>
+  <button onclick="alert('Produk Cupcake berhasil dibeli!')">BELI</button>
+</div>
+
+<footer>
+  <p>La Petite Cake &copy; 2025</p>
+</footer>
+</body>
+</html>

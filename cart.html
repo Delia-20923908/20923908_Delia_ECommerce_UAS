@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keranjang - La Petite Cake</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #f8c6d0; /* pink muda */
+      gap: 15px;
+      flex-wrap: nowrap;
+    }
+    header .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #6b214f;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      padding: 8px 14px;
+      background: #fff;
+      color: #333;
+      border-radius: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 70px;
+      text-align: center;
+    }
+    nav a:hover {
+      background: #f0f0f0;
+      color: #6a0dad;
+    }
+    main {
+      flex-grow: 1;
+      padding: 20px 40px 60px;
+      background: white;
+    }
+    table.cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table.cart-table th, table.cart-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background-color: white;
+    }
+    .qty-btn {
+      padding: 4px 8px;
+      margin: 0 3px;
+      background: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      border-radius: 4px;
+      user-select: none;
+    }
+    .qty-btn:hover {
+      background-color: #ddd;
+    }
+    .btn-remove {
+      padding: 5px 10px;
+      background: #d9534f;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+      user-select: none;
+    }
+    .btn-remove:hover {
+      background: #c9302c;
+    }
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      /* buat justify space antara tombol Kembali dan Checkout */
+      justify-content: flex-start;
+    }
+    .back-btn {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background-color: gray;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .back-btn:hover {
+      background-color: #555;
+    }
+    .checkout-btn {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background-color: #6b214f;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      user-select: none;
+      transition: background 0.3s;
+      margin-left: auto; /* dorong checkout ke kanan paling ujung */
+    }
+    .checkout-btn:hover {
+      background-color: #5a193f;
+    }
+    footer {
+      background-color: #6b214f;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-weight: 600;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      font-size: 1rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">La Petite Cake</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="produk.html">Produk</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="cart.html" class="cart-link">Keranjang</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Keranjang Belanja</h2>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Produk</th>
+          <th>Jumlah</th>
+          <th>Harga Satuan</th>
+          <th>Subtotal</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <tr>
+          <td>1</td>
+          <td>Red Velvet Slice</td>
+          <td>
+            <button class="qty-btn minus" type="button">-</button>
+            <span class="qty">1</span>
+            <button class="qty-btn plus" type="button">+</button>
+          </td>
+          <td class="price">35000</td>
+          <td class="subtotal">35000</td>
+          <td><button class="btn-remove" type="button">Hapus</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Fudgy Brownies</td>
+          <td>
+            <button class="qty-btn minus" type="button">-</button>
+            <span class="qty">4</span>
+            <button class="qty-btn plus" type="button">+</button>
+          </td>
+          <td class="price">25000</td>
+          <td class="subtotal">100000</td>
+          <td><button class="btn-remove" type="button">Hapus</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5" style="text-align: right; font-weight: bold;">Total Harga Produk:</td>
+          <td id="total-price">Rp 135000</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="cart-actions">
+      <button onclick="location.href='index.html'" class="back-btn" type="button">Kembali</button>
+      <a href="checkout.html" class="checkout-btn">Checkout</a>
+    </div>
+  </main>
+  <footer>
+    La Petite Cake &copy; 2025
+  </footer>
+  <script>
+    function updateSubtotal(row) {
+      let qty = parseInt(row.querySelector(".qty").textContent);
+      let price = parseInt(row.querySelector(".price").textContent);
+      row.querySelector(".subtotal").textContent = qty * price;
+      updateTotal();
+    }
+    function updateTotal() {
+      let total = 0;
+      document.querySelectorAll("#cart-items tr").forEach(row => {
+        total += parseInt(row.querySelector(".subtotal").textContent);
+      });
+      document.getElementById("total-price").textContent = "Rp " + total;
+    }
+    document.querySelectorAll(".plus").forEach(btn => {
+      btn.addEventListener("click", function() {
+        let row = this.closest("tr");
+        let qtyEl = row.querySelector(".qty");
+        qtyEl.textContent = parseInt(qtyEl.textContent) + 1;
+        updateSubtotal(row);
+      });
+    });
+    document.querySelectorAll(".minus").forEach(btn => {
+      btn.addEventListener("click", function() {
+        let row = this.closest("tr");
+        let qtyEl = row.querySelector(".qty");
+        let current = parseInt(qtyEl.textContent);
+        if (current > 1) {
+          qtyEl.textContent = current - 1;
+          updateSubtotal(row);
+        }
+      });
+    });
+    document.querySelectorAll(".btn-remove").forEach(btn => {
+      btn.addEventListener("click", function() {
+        let row = this.closest("tr");
+        row.remove();
+        updateTotal();
+      });
+    });
+  </script>
+</body>
+</html>

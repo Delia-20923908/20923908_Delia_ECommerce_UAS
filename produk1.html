@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Cheesecake - La Petite Cake</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: auto;
+        padding: 1rem;
+    }
+    /* Header with white background and black text for nav links */
+    header {
+        background-color: #ffd6e8; /* putih */
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+    nav a {
+        background: #fff; /* bubble putih */
+        color: #000; /* hitam */
+        font-weight: bold;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        white-space: nowrap;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+    }
+    nav a:hover {
+        background-color: #ffd6e8;
+        color: #444;
+    }
+    img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+    h2 {
+        color: #7B3FBF;
+        margin-bottom: 5px;
+    }
+    .price {
+        font-weight: bold;
+        color: #0f0f0f;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+    .description {
+        margin-bottom: 20px;
+        color: #444;
+        line-height: 1.5;
+    }
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    button {
+        background-color: #5a2a87;
+        color: white;
+        border: none;
+        padding: 12px 28px;
+        font-weight: bold;
+        border-radius: 50px;
+        box-shadow: 0 4px 8px rgba(123, 63, 191, 0.4);
+        cursor: pointer;
+        width: 48%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+        background-color: #5a2a87;
+        box-shadow: 0 6px 12px rgba(90, 42, 135, 0.6);
+    }
+    button:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(123, 63, 191, 0.7);
+    }
+    /* Footer with purple background and white text, with border in purple */
+    footer {
+        background-color: #f9f8fa; /* ungu */
+        border-top: 3px solid #f7f6f7;
+        padding: 15px 0;
+        text-align: center;
+        user-select: none;
+    }
+    footer p {
+        margin: 0;
+        color: rgb(8, 8, 8);
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="produk.html">Produk</a>
+        <a href="kontak.html">Kontak</a>
+        <a href="cart.html">Keranjang</a>
+        <a href="checkout.html">Checkout</a>
+    </nav>
+</header>
+<main>
+    <img src="https://images.pexels.com/photos/6168429/pexels-photo-6168429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cheesecake" />
+    <h2>Cheesecake</h2>
+    <p class="price">Rp 150.000</p>
+    <div class="description">
+        <p>Kue keju panggang dengan bagian luar yang gosong dan karamel, menciptakan kontras sempurna dengan tekstur bagian dalam yang lembut, lumer, dan creamy.</p>
+        <ul>
+            <li>Ukuran 16 cm (6-8 slice)</li>
+            <li>Cocok untuk hadiah dan Ulang Tahun</li>
+            <li>Tanpa pengawet dan dibuat fresh by order</li>
+        </ul>
+    </div>
+    <div class="button-group">
+        <button onclick="window.history.back()">KEMBALI</button>
+        <button onclick="buyNow()">BELI</button>
+    </div>
+</main>
+<footer>
+    <p>La Petite Cake &copy; 2025</p>
+</footer>
+
+<script>
+    function buyNow() {
+        const product = {
+            name: "Cheesecake",
+            price: 150000,
+            quantity: 1
+        };
+        localStorage.setItem('cart', JSON.stringify([product]));
+        window.location.href = 'checkout.html';
+    }
+</script>
+</body>
+</html>
